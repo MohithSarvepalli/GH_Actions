@@ -1,5 +1,5 @@
 # GH_Actions
-This Repo is made to lear about GH Actions and Ansible Integration from Pluralsight course
+This Repo is made to learn about GH Actions and Ansible Integration from Pluralsight course
 
 What is Github Actions?
 
