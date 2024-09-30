@@ -3,6 +3,11 @@ on:
   pull_request:
     types: [opened, reopened]
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'test-*'
+      - 'feature/*'
 jobs:
   npm1:
     runs-on: ubuntu-latest
