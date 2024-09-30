@@ -1,5 +1,8 @@
 name: Test_NPM
-on: [push,workflow_dispatch ]
+on:
+  pull_request:
+    types: [opened, reopened]
+  workflow_dispatch:
 jobs:
   npm1:
     runs-on: ubuntu-latest
