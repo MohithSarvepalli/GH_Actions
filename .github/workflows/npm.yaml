@@ -8,6 +8,8 @@ on:
       - main
       - 'test-*'
       - 'feature/*'
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   npm1:
     runs-on: ubuntu-latest
