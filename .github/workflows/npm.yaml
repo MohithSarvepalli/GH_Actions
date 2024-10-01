@@ -22,13 +22,6 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-      - name: upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist-artifact
-          path: |
-           dist
-           package.json
   deploy:
     needs: npm1
     runs-on: ubuntu-latest
@@ -43,6 +36,13 @@ jobs:
         run: npm ci
       - name: Build the project
         run: npm run build
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-artifact
+          path: |
+           dist
+           package.json
       - name: Deploy Message
         run: echo "Deploying the project......."
 
