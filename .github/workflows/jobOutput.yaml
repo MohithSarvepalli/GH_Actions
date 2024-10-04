@@ -12,7 +12,7 @@ jobs:
             - name: output
               id: mohith
               run: |
-                echo "message=${echo "Mohith"}" >> $GITHUB_OUTPUT
+                echo "message=${echo Mohith}" >> $GITHUB_OUTPUT
     job2:
         needs: job1
         runs-on: ubuntu-latest
