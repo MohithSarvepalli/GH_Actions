@@ -1,0 +1,22 @@
+name: JobOutPutExample
+on: 
+    push:
+        branches:
+            - "feature/*"
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        outputs:
+            myoutput: ${{ steps.mohith.outputs.message }}
+        steps:
+            - name: output
+              id: mohith
+              run: |
+                echo "message=${echo "Mohith"}" >> $GITHUB_OUTPUT
+    job2:
+        needs: job1
+        runs-on: ubuntu-latest
+        steps:
+            - name: using Output
+              run: |
+                echo "Hello ${{ needs.job1.outputs.myoutput }}"
