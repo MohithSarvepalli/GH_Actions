@@ -1,0 +1,31 @@
+# .github/workflows/approval-workflow.yml
+name: Approval Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  request-approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request approval
+        uses: hmarr/auto-approve-action@v2 # Sends an approval request
+      - name: Approval step
+        id: approval
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core');
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+
+            const response = await octokit.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "main-workflow.yml",
+              ref: "main", # Set branch or ref
+              inputs: {
+                approved: "true"
+              }
+            });
+          result-encoding: json
+
